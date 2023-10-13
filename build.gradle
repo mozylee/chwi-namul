@@ -52,6 +52,10 @@ dependencies {
 
 	// H2
 	runtimeOnly 'com.h2database:h2'
+
+	// Selenium
+	implementation 'org.seleniumhq.selenium:selenium-java:4.14.1'
+	implementation 'org.seleniumhq.selenium:selenium-support:4.14.1'
 }
 
 tasks.named('test') {
