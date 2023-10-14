@@ -6,11 +6,17 @@ import com.toy.chwinamul.crawler.domain.JobDescriptionRepository
 import com.toy.chwinamul.crawler.dto.KakaoBankRecruitment
 import com.toy.chwinamul.crawler.service.CrawlingService
 import org.openqa.selenium.By
+import org.openqa.selenium.NoSuchElementException
+import org.openqa.selenium.WebElement
 import org.openqa.selenium.chrome.ChromeDriver
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
 private const val URL = "https://recruit.kakaobank.com/jobs"
+
+private const val WAIT_AMOUNT = 3000L
+
+private const val WAIT_TICK = 1000L
 
 @Service
 class CrawlingServiceImpl(
@@ -27,7 +33,18 @@ class CrawlingServiceImpl(
     private fun findJobDescriptions(driver: ChromeDriver): List<JobDescription> {
         driver.get(URL)
 
-        Thread.sleep(3000);
+        Thread.sleep(WAIT_AMOUNT)
+
+        while (true) {
+            try {
+                val moreButton: WebElement = driver.findElement(By.className("link_more"))
+                moreButton.click()
+            } catch (e: NoSuchElementException) {
+                break
+            }
+
+            Thread.sleep(WAIT_TICK)
+        }
 
         return driver.findElements(By.className("link_tit"))
             .map(::KakaoBankRecruitment)
