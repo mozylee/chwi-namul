@@ -10,7 +10,7 @@ import jakarta.persistence.Id
 class JobDescription constructor(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long?=null,
+    val id: Long? = null,
     val companyName: String,
     val title: String = "",
     val dueDate: String = "-",
