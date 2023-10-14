@@ -1,5 +1,6 @@
 package com.toy.chwinamul.common.utils
 
+import com.toy.chwinamul.common.constant.WAIT_AMOUNT
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.chrome.ChromeOptions
 
@@ -23,8 +24,6 @@ class WebDriverUtil {
     }
 
 }
-
-const val WAIT_AMOUNT = 1000L // 1s
 
 inline fun <T> ChromeDriver.use(block: (ChromeDriver) -> T): T {
     val driver = this

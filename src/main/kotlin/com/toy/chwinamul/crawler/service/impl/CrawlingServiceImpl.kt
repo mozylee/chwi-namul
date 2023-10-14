@@ -1,5 +1,8 @@
 package com.toy.chwinamul.crawler.service.impl
 
+import com.toy.chwinamul.common.constant.KAKAO_BANK_RECRUIT
+import com.toy.chwinamul.common.constant.WAIT_AMOUNT
+import com.toy.chwinamul.common.constant.WAIT_TICK
 import com.toy.chwinamul.common.utils.CrawlingUtil
 import com.toy.chwinamul.crawler.domain.JobDescription
 import com.toy.chwinamul.crawler.domain.JobDescriptionRepository
@@ -12,11 +15,6 @@ import org.openqa.selenium.chrome.ChromeDriver
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
-private const val URL = "https://recruit.kakaobank.com/jobs"
-
-private const val WAIT_AMOUNT = 3000L
-
-private const val WAIT_TICK = 1000L
 
 @Service
 class CrawlingServiceImpl(
@@ -31,7 +29,7 @@ class CrawlingServiceImpl(
     }
 
     private fun findJobDescriptions(driver: ChromeDriver): List<JobDescription> {
-        driver.get(URL)
+        driver.get(KAKAO_BANK_RECRUIT)
 
         Thread.sleep(WAIT_AMOUNT)
 
