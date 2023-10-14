@@ -1,6 +1,6 @@
 package com.toy.chwinamul.crawler.service
 
-import com.toy.chwinamul.crawler.dto.JobDescription
+import com.toy.chwinamul.crawler.domain.JobDescription
 
 interface CrawlingService {
 

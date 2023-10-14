@@ -1,5 +1,6 @@
 package com.toy.chwinamul.crawler.dto
 
+import com.toy.chwinamul.crawler.domain.JobDescription
 import org.openqa.selenium.By
 import org.openqa.selenium.WebElement
 import java.time.LocalDate
