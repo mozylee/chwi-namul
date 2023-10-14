@@ -3,17 +3,15 @@ package com.toy.chwinamul.common.utils
 import com.toy.chwinamul.crawler.domain.JobDescription
 import org.openqa.selenium.chrome.ChromeDriver
 
+typealias CrawlingFunction = (driver: ChromeDriver) -> List<JobDescription>
+
 class CrawlingUtil {
 
     companion object {
-        fun crawl(crawlingFunction: (driver: ChromeDriver) -> List<JobDescription>): List<JobDescription> {
-            val jobDescriptions: MutableList<JobDescription> = mutableListOf()
+        fun crawl(crawlingFunction: CrawlingFunction): List<JobDescription> = WebDriverUtil.getDriver()
+            .use(crawlingFunction)
+            .toList()
 
-            val crawlingResults: List<JobDescription> = WebDriverUtil.getDriver().use(crawlingFunction)
-            jobDescriptions.addAll(crawlingResults)
-
-            return jobDescriptions.toList()
-        }
     }
 
 }
