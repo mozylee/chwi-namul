@@ -12,6 +12,7 @@ data class KakaoBankRecruitment(
 
     fun toJobDescription(): JobDescription {
         val (title, dueDate) = parseBoard()
+
         return JobDescription(
             companyName = COMPANY_NAME,
             url = link.getAttribute("href"),

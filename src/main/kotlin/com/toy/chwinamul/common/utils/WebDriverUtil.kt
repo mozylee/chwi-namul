@@ -1,9 +1,7 @@
-package com.toy.chwinamul.utils
+package com.toy.chwinamul.common.utils
 
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.chrome.ChromeOptions
-
-
 
 
 class WebDriverUtil {
@@ -17,11 +15,23 @@ class WebDriverUtil {
 
             val chromeOptions = ChromeOptions()
             chromeOptions.setBinary("")
-            chromeOptions.addArguments("--headless",)
+            chromeOptions.addArguments("--headless")
             chromeOptions.addArguments("--remote-allow-origins=*")
 
             return ChromeDriver(chromeOptions)
         }
     }
 
+}
+
+const val WAIT_AMOUNT = 1000L // 1s
+
+inline fun <T> ChromeDriver.use(block: (ChromeDriver) -> T): T {
+    val driver = this
+    try {
+        return block(driver)
+    } finally {
+        Thread.sleep(WAIT_AMOUNT)
+        driver.quit()
+    }
 }
