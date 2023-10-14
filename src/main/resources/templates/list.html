@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Book List</title>
+</head>
+<body>
+<h1>Book List</h1>
+<br/>
+<div>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>회사명</th>
+            <th>마감일</th>
+            <th>설명</th>
+            <th>URL</th>
+        </tr>
+        <tr th:each="job : ${jobDescriptions}">
+            <td th:text="${job.id}"></td>
+            <td th:text="${job.companyName}"></td>
+            <td th:text="${job.dueDate}"></td>
+            <td th:text="${job.desc}"></td>
+            <td><a th:href="${job.url}" th:target="_blank">링크</a></td>
+        </tr>
+    </table>
+</div>
+<br/><br/>
+<a href="/">Main Page</a>
+</body>
+</html>
