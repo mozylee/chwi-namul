@@ -10,8 +10,6 @@ class CrawlingUtil {
     companion object {
         fun crawl(crawlingFunction: CrawlingFunction): List<JobDescription> = WebDriverUtil.getDriver()
             .use(crawlingFunction)
-            .toList()
-
     }
 
 }
